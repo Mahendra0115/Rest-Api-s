@@ -13,15 +13,10 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(csrf -> csrf.disable()) // Disable CSRF for POST from Postman
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/signup", "/api/users/login").permitAll() // Allow both endpoints
+        http.csrf(csrf -> csrf.disable()) // Disable CSRF for POST from Postman
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/users/signup", "/api/users/login").permitAll() // Allow both endpoints
                         .anyRequest().authenticated()           // 🔒 Secure other endpoints
-                )
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                );
+                ).sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
     }

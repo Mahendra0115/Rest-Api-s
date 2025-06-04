@@ -18,34 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-//    private UserService userService;
     private final  UserService userService;
 
 
-
-//   -----------------    Testing/Debuging purpose
-
-//    @PostMapping
-//    public AppUser createUser(@RequestBody AppUser user){
-//        return userService.signupUser(user);
-//    }
-
-
-
-
-
-//   ---------------------------Normal  Signup Process
-
-//    @PostMapping("/signup")
-//    public ResponseEntity<AppUser>  signupUser(@RequestBody AppUser appUser){
-//        AppUser savedUser = userService.signupUser(appUser);
-//        return ResponseEntity.ok(savedUser);
-//    }
-
-
-
-
-    //-----------------Validation SignupUserResponce
+    // -------------Validation SignupUserResponce
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -61,7 +37,6 @@ public class UserController {
     }
 
 
-
 //   -------------------------   Login here
 
     @PostMapping("/login")
@@ -69,8 +44,6 @@ public class UserController {
         LoginResponse response = userService.loginUser(loginRequest);
         return ResponseEntity.ok(response);
     }
-
-
 
 
 
